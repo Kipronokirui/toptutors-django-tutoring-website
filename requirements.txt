@@ -1,0 +1,14 @@
+asgiref 
+dj-database-url 
+Django 
+python-dotenv
+django-downloadview 
+django-on-heroku 
+gunicorn 
+psycopg2-binary
+pytz
+requests 
+sqlparse
+tzdata 
+urllib3 
+whitenoise 

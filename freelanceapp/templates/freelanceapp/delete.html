@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .container{
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 8px;
+    }
+</style>
+<div class="container">
+    <h3>You Are About To Delete This Post!</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Delete" style="background-color: red;">
+    </form>
+</div>
+<script>
+    let inputFieds = document.getElementsByTagName('input')
+    for (let i=0; i<inputFieds.length; i++){
+        inputFieds[i].classList.add('form-control')
+    }
+</script>
+
+{% endblock %}

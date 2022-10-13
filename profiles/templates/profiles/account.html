@@ -1,0 +1,55 @@
+<!-- First copy and paste profile.html code because they are almost similar  -->
+<!-- whenever there is the term profile change to account  -->
+{% extends 'base.html' %}
+{% block content %}
+<h3>Welcome to the page describing me </h3>
+<div>
+    <!-- Icon for editing the profile picture starts  -->
+    <a href="" style="text-decoration: none;">
+        <div class="edit-info">
+            Edit
+            <i class="fas fa-user-edit"></i> 
+        </div>
+    </a>
+    <!-- Icon for editing the profile picture ends  -->
+</div>
+<div>
+    <!-- Profile picture  -->
+    <img src="{{ account.picture.url }}">
+</div>
+<div>
+    <!-- Profession of the writer  -->
+    <h4>{{ account.profession }}</h4>
+    <!-- Name of the writer  -->
+    <h5>{{ account.name }}</h5>
+</div>
+<!-- Adding username  -->
+<p>@{{ account.name }}</p>
+<!-- Adding username  -->
+<div>
+    <!-- About me section  -->
+    <p>{{ account.about }}</p>
+</div>
+<h1>My Articles</h1>
+<div>
+    
+    <!-- Articles written by the user  -->
+    {% for post in account.post_set.all %}
+   
+    <div class="card">
+        <img src="{{ post.image.url }}">
+        <div class="cardBody">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body|safe|truncatechars:'100' }}</p>
+            <!-- <a href="">Read More</a> -->
+        </div>
+        <!-- Adding edit and delete under each post starts  -->
+        <!-- <a href="{% url 'update' post.slug %}" class="btn btn-primary"><i class="fas fas-pen"></i></a> -->
+        <!-- <a href="{% url 'delete' post.slug %}" class="btn btn-primary"><i class="fas fas-trash"></i></a> -->
+        <a href="{% url 'update' post.slug %}" class="btn btn-primary">Edit POST</a>
+        <a href="{% url 'delete' post.slug %}" class="btn btn-primary">Delete POST </i></a>
+        <!-- Adding edit and delete under each post ends -->
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

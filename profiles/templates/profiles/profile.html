@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Welcome to the page describing me </h3>
+<div>
+    <!-- Profile picture  -->
+    <img src="{{ profile.picture.url }}">
+</div>
+<div>
+    <!-- Profession of the writer  -->
+    <h4>{{ profile.profession }}</h4>
+    <!-- Name of the writer  -->
+    <h5>{{ profile.name }}</h5>
+</div>
+<div>
+    <!-- About me section  -->
+    <p>{{ profile.about }}</p>
+</div>
+<div>
+    <!-- Articles written by the user  -->
+    <h1>My Articles</h1>
+    {% for post in profile.post_set.all %}
+    
+    <div class="card">
+        <img src="{{ post.image.url }}">
+        <div class="cardBody">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body|safe|truncatechars:'100' }}</p>
+            <a href="">Read More</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

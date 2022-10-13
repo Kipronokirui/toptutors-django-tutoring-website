@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" >
+<link rel="stylesheet" href="{% static 'css/detail.css' %}" >
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+  <a href="{% url 'index' %}" class="active">Home</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    
+    <div class="dropdown-content">
+      {% for category in categorys %}
+      <a href="#">{{ category }}</a>
+      {% endfor %}
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+   
+  </div> 
+  <a href="#about">About</a>
+  
+
+  <!-- Display dropdown if the user is logged in  -->
+  {% if request.user.is_authenticated %}
+  <!-- Displaying create post only if the user is logged in starts  -->
+  <a href="{% url 'create' %}">Create Post</a>
+  <!-- Displaying create post only if the user is logged in ends  -->
+  <div class="dropdown">
+    <button class="dropbtn">{{request.user.username}}
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="{% url 'account' %}">Account</a>
+      <a href="#">Log Out</a>
+    </div>
+  </div> 
+  {% endif %}
+  <!-- Display dropdown if the user is logged in  ends -->
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+<br>
+<!-- Alert box starts  -->
+{% for message in messages %}
+<div class="alert alert-primary" style="width: 30%;margin:auto;display:flex; align-items:center;">
+  <p>{{message}}</p>
+  <button type="button" class="close alertBtn" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+<!-- Alert box ends  -->
+{% block content%}
+<h1> Hello World</h1>
+{% endblock %}
+
+<div class="footer">
+    <p>Footer</p>
+</div>
+
+<script src="{% static 'js/script.js' %}"> </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+{% block content%}
+{% for category in categorys %}
+<a href="{% url 'detail' post.slug %}">{{ category.title }}</a>
+{% endfor %}
+<h1> The introductory text will be displayed here</h1>
+{% for post in posts %}
+    <div class="card" style="width: 18rem;">
+        <a href="{% url 'detail' post.slug %}">
+            <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+            <h5>{{ post.category }}</h5>
+            <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.body|truncatechars:200 }}</p>
+            <!-- Posted by starts -->
+            <img src="{{ post.writer.picture.url }}" alt="" />
+            <p>{{ post.writer.name }}</p>
+            <p>{{ post.created }}&middot; 6min read</p>
+            <!-- Posted by ends -->
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </a>
+    </div>
+  
+{% endfor %}
+<br><br><br>
+{% for category in categorys %}
+<ul>
+    <li>{{ categorys }}</li>
+</ul>
+{% endfor %}
+{% endblock %}
