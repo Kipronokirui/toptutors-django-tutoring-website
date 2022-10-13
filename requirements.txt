@@ -5,6 +5,7 @@ python-dotenv
 django-downloadview 
 django-on-heroku 
 gunicorn 
+Pillow
 psycopg2-binary
 pytz
 requests 
