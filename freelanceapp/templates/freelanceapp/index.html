@@ -7,7 +7,7 @@
 <h1> The introductory text will be displayed here</h1>
 {% for post in posts %}
     <div class="card" style="width: 18rem;">
-        <a href="{% url 'detail' post.slug %}">
+        <a href="{% url 'detail' %}">
             <img src="{{ post.image.url }}" class="card-img-top" alt="...">
             <h5>{{ post.category }}</h5>
             <div class="card-body">
